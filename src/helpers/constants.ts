@@ -1,5 +1,5 @@
 // Application constants
-export const PORT: number = 8080;
+export const PORT: number = 3001;
 export const CLIENT_PORT: number = 3000;
 export const SESSION_TOKEN_COOKIE: string = "BACKEND-AUTH-AUTION-SOFTWARE";
 export const DOMAIN: string = "localhost";
