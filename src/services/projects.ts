@@ -81,7 +81,7 @@ export const readProjects = async (
       isDataSorted,
       isDescendingOrder,
     } = req.body;
-    let projects: ProjectData[] = [];
+    let projects: any;
     if (!pageNumber || !projectsPerPage) {
       return res.status(400).json({ errorMessage: INVALID_PROJECT_DETAILS });
     }
@@ -114,7 +114,7 @@ export const readProjects = async (
         );
       }
     }
-    return res.status(204).json(projects).end();
+    return res.status(200).json(projects).end();
   } catch (error) {
     return res.status(500).json({
       errorMessage: SYSTEM_ERROR,

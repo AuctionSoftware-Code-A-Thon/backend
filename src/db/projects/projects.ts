@@ -31,6 +31,8 @@ export const readProjectsDB = async (
   pageNumber: number,
   projectsPerPage: number
 ) => {
+  const totalCount = await db.projects.count();
+  const totalPages = Math.ceil(totalCount / projectsPerPage);
   const projects = await db.projects.findMany({
     orderBy: {
       pCategory: "asc",
@@ -38,13 +40,15 @@ export const readProjectsDB = async (
     skip: (pageNumber - 1) * projectsPerPage,
     take: projectsPerPage,
   });
-  return projects;
+  return { projects, totalPages, currentPage: pageNumber };
 };
 export const readProjectsSortedByCategory = async (
   pageNumber: number,
   projectsPerPage: number,
   isDesc: boolean
 ) => {
+  const totalCount = await db.projects.count();
+  const totalPages = Math.ceil(totalCount / projectsPerPage);
   const projects = await db.projects.findMany({
     orderBy: {
       pCategory: isDesc ? "desc" : "asc",
@@ -52,7 +56,7 @@ export const readProjectsSortedByCategory = async (
     skip: (pageNumber - 1) * projectsPerPage,
     take: projectsPerPage,
   });
-  return projects;
+  return { projects, totalPages, currentPage: pageNumber };
 };
 
 export const readProjectsByCategorySortedByCategory = async (
@@ -61,6 +65,13 @@ export const readProjectsByCategorySortedByCategory = async (
   category: string,
   isDesc: boolean
 ) => {
+  const totalCount = await db.projects.count({
+    where: {
+      pCategory: category,
+    },
+  });
+
+  const totalPages = Math.ceil(totalCount / projectsPerPage);
   const projects = await db.projects.findMany({
     where: {
       pCategory: category,
@@ -71,13 +82,20 @@ export const readProjectsByCategorySortedByCategory = async (
     skip: (pageNumber - 1) * projectsPerPage,
     take: projectsPerPage,
   });
-  return projects;
+  return { projects, totalPages, currentPage: pageNumber };
 };
 export const readProjectsByCategory = async (
   pageNumber: number,
   projectsPerPage: number,
   category: string
 ) => {
+  const totalCount = await db.projects.count({
+    where: {
+      pCategory: category,
+    },
+  });
+
+  const totalPages = Math.ceil(totalCount / projectsPerPage);
   const projects = await db.projects.findMany({
     where: {
       pCategory: category,
@@ -85,5 +103,5 @@ export const readProjectsByCategory = async (
     skip: (pageNumber - 1) * projectsPerPage,
     take: projectsPerPage,
   });
-  return projects;
+  return { projects, totalPages, currentPage: pageNumber };
 };
