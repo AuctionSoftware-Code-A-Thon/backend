@@ -24,4 +24,5 @@ export type ProjectData = {
   pdescription: string;
   funds: string;
   pCategory: string;
+  purl: string;
 };

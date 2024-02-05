@@ -30,6 +30,7 @@ export const validateProject = (data: any) => {
     pdescription: Joi.string().required(),
     funds: Joi.string().required(),
     pCategory: Joi.string().required(),
+    purl: Joi.string().required(),
   });
   return projectSchema.validate(data);
 };
@@ -40,6 +41,7 @@ export const validateUpdateProject = (data: any) => {
     pdescription: Joi.string().required(),
     funds: Joi.string().required(),
     pCategory: Joi.string().required(),
+    purl: Joi.string().required(),
   });
   return projectSchema.validate(data);
 };

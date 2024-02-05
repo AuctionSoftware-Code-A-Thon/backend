@@ -28,4 +28,5 @@ model Projects {
   pdescription String
   funds        String
   pCategory    String
+  purl         String @db.VarChar(1024)
 }
