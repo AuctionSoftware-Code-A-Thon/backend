@@ -36,7 +36,7 @@ export const validateProject = (data: any) => {
 };
 export const validateUpdateProject = (data: any) => {
   const projectSchema = Joi.object({
-    pid: Joi.string().required(),
+    pid: Joi.number().required(),
     pname: Joi.string().required(),
     pdescription: Joi.string().required(),
     funds: Joi.string().required(),
