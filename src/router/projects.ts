@@ -3,6 +3,7 @@ import { isAuthenticated } from "../middlewares";
 import {
   createProject,
   deleteProject,
+  readProjectByid,
   readProjects,
   updateProject,
 } from "../services/projects";
@@ -12,4 +13,5 @@ export default (router: express.Router) => {
   router.post("/projects/create", isAuthenticated, createProject);
   router.post("/projects/delete", isAuthenticated, deleteProject);
   router.post("/projects/update", isAuthenticated, updateProject);
+  router.post("/project/get", isAuthenticated, readProjectByid);
 };

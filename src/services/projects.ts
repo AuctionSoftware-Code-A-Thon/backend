@@ -2,6 +2,7 @@ import express from "express";
 import {
   createProjectDB,
   deleteProjectDB,
+  readProjectByidDB,
   readProjectsByCategory,
   readProjectsByCategorySortedByCategory,
   readProjectsDB,
@@ -115,6 +116,25 @@ export const readProjects = async (
       }
     }
     return res.status(200).json(projects).end();
+  } catch (error) {
+    return res.status(500).json({
+      errorMessage: SYSTEM_ERROR,
+      systemError: error,
+    });
+  }
+};
+
+export const readProjectByid = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { pid } = req.body;
+    if (!pid) {
+      return res.status(400).json({ errorMessage: INVALID_PROJECT_DETAILS });
+    }
+    const project = await readProjectByidDB(parseInt(pid, 10));
+    return res.status(200).json(project).end();
   } catch (error) {
     return res.status(500).json({
       errorMessage: SYSTEM_ERROR,

@@ -7,7 +7,14 @@ export const createProjectDB = async (data: Omit<ProjectData, "pid">) => {
   });
   return newProject;
 };
-
+export const readProjectByidDB = async (pid: number) => {
+  const project = await db.projects.findUnique({
+    where: {
+      pid,
+    },
+  });
+  return project;
+};
 export const updateProjectDB = async (projectId: number, data: ProjectData) => {
   const updatedProject = await db.projects.update({
     where: {
