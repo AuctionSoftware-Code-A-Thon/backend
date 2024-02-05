@@ -26,7 +26,7 @@ export const createUser = async (
 
 export const updateUser = async (
   user: User
-): Promise<Omit<User, "saltedPassword" | "sessionToken" | "salt">> => {
+): Promise<Omit<User, "saltedPassword" | "salt">> => {
   return db.user.update({
     where: { uid: user.uid },
     data: {
@@ -35,6 +35,7 @@ export const updateUser = async (
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       address: user.address,
+      sessionToken: user.sessionToken,
     },
     select: {
       uid: true,
@@ -44,7 +45,7 @@ export const updateUser = async (
       phoneNumber: true,
       address: true,
       saltedPassword: false,
-      sessionToken: false,
+      sessionToken: true,
       salt: false,
     },
   });
