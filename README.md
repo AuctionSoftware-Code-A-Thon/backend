@@ -15,6 +15,8 @@ once you are done with the env setup, execute the below command
 npx prisma db push
 ```
 
+Also run the sql script to add the projects.
+
 ## Run the application in Development mode
 
 ```sh
