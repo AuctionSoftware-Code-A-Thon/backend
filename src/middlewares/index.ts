@@ -21,6 +21,9 @@ export const isAuthenticated = async (
         errorMessage: INVALID_SESSION,
       });
     }
+    delete existingUser.saltedPassword;
+    delete existingUser.sessionToken;
+    delete existingUser.salt;
     merge(req, { identity: existingUser });
     return next();
   } catch (error) {

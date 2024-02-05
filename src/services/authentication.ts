@@ -6,6 +6,7 @@ import { authenticate, random } from "../helpers";
 import {
   DOMAIN,
   DUPLICATE_USER,
+  IDENTITY,
   INVALID_LOGIN_DETAILS,
   INVALID_USER_DETAILS,
   LOG_OUT_SUCCESS,
@@ -58,7 +59,7 @@ export const login = async (req: express.Request, res: express.Response) => {
 };
 export const logout = async (req: express.Request, res: express.Response) => {
   try {
-    const user = get(req, "identity") as User;
+    const user = get(req, IDENTITY) as User;
     user.sessionToken = "";
     await updateUser(user);
     return res.status(200).json({
