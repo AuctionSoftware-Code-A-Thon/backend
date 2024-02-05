@@ -89,7 +89,7 @@ export const register = async (req: express.Request, res: express.Response) => {
       firstName: valid.value.firstName,
       lastName: valid.value.lastName,
       phoneNumber: valid.value.phoneNumber,
-      sessionToken: authenticate(salt, valid.value.email),
+      sessionToken: null,
       salt: salt,
     });
     return res.status(200).json(user).end();
