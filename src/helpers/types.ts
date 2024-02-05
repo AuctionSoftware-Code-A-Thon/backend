@@ -17,3 +17,11 @@ export type createUserRequest = {
   address: string;
   password: string;
 };
+
+export type ProjectData = {
+  pid: number;
+  pname: string;
+  pdescription: string;
+  funds: string;
+  pCategory: string;
+};

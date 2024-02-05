@@ -23,3 +23,23 @@ export const validateCreateUserData = (req: createUserRequest) => {
   });
   return createUserSchema.validate(req);
 };
+
+export const validateProject = (data: any) => {
+  const projectSchema = Joi.object({
+    pname: Joi.string().required(),
+    pdescription: Joi.string().required(),
+    funds: Joi.string().required(),
+    pCategory: Joi.string().required(),
+  });
+  return projectSchema.validate(data);
+};
+export const validateUpdateProject = (data: any) => {
+  const projectSchema = Joi.object({
+    pid: Joi.string().required(),
+    pname: Joi.string().required(),
+    pdescription: Joi.string().required(),
+    funds: Joi.string().required(),
+    pCategory: Joi.string().required(),
+  });
+  return projectSchema.validate(data);
+};

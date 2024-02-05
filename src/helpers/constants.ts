@@ -21,3 +21,5 @@ export const INVALID_REQUEST: string = "Invalid request";
 export const SYSTEM_ERROR: string = "System error occured";
 export const SOMETHING_WENT_WRONG: string =
   "Something went wrong, Please contact admin";
+export const INVALID_PROJECT_DETAILS: string =
+  "Project details provided are invalid";

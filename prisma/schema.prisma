@@ -27,4 +27,5 @@ model Projects {
   pname        String
   pdescription String
   funds        String
+  pCategory    String
 }
