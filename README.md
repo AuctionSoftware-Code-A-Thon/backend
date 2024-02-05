@@ -7,7 +7,7 @@ DATABASE_URL = mysql://nxb210086:demo123@localhost:3306/aution_software
 SECRET = 56EF7F3888F7BBE4512375795D11D
 ```
 
-Change nxb210086 to your local user name, demo 123 to your local password and hospitalManagement to your schema.
+Change nxb210086 to your local user name, demo 123 to your local password and aution_software to your schema.
 
 once you are done with the env setup, execute the below command
 
